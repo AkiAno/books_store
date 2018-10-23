@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Book;
-use App\Genre;
-
 use Illuminate\Http\Request;
+use App\Book;
+use App\Bookshop;
 
-class BookController extends Controller
+class BookShopController extends Controller
 {
+    //
     public function __construct(){
         $this->middleware('auth')->except('index');
 //        $this->middleware('auth')->only(['create', 'store']);
@@ -16,16 +16,14 @@ class BookController extends Controller
 
 
     public function index(){
-        $books = Book::limit(100)->get();
-        $genres = Genre::all();
+        $bookshops = Bookshop::all();
         //dd($genres);
-        return view('books/index', [
-            'books' => $books,
-            'genres' => $genres,
+        return view('bookshops/index', [
+            'bookshops' => $bookshops
         ]);
     }
 
-    public function create(){
+   /* public function create(){
         return view('books/create');
     }
     
@@ -63,6 +61,5 @@ class BookController extends Controller
         $book = Book::find($id);
         return view('books/edit', compact(['book']));
     }
-
-    
+*/
 }

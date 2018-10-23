@@ -10,6 +10,12 @@ class Book extends Model
 
     protected $fillable = ['title', 'authors', 'image'];
 
+    public function genre(){
+        return $this->belongsTo('App\Genre', 'genres_id');
+    }
 
+    public function bookshop(){
+        return $this->hasMany('App\Bookshop');
+    }
 }
 
