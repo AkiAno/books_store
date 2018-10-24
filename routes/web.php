@@ -24,6 +24,11 @@ Route::post('/book/{id?}', 'BookController@store');
 // Route::resource('/book', 'BookController');
 
 Route::get('/bookshops', 'BookShopController@index');
+Route::get('/bookshops/create', 'BookShopController@create');
+Route::get('/bookshops/edit/{id}', "BookShopController@edit");
+
+Route::post('/bookshops/{id?}', 'BookShopController@store');
+Route::get('/bookshops/{id}', "BookShopController@delete");
 
 Route::get('/home', 'HomeController@index')->name('home');
 

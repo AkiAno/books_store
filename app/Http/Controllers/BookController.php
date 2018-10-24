@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Book;
 use App\Genre;
+use App\Publisher;
 
 use Illuminate\Http\Request;
 
@@ -26,7 +27,9 @@ class BookController extends Controller
     }
 
     public function create(){
-        return view('books/create');
+        $publishers = Publisher::all();
+        $genres = Genre::all();
+        return view('books/create', compact(['publishers', 'genres']));
     }
     
     public function delete($id){
@@ -43,8 +46,12 @@ class BookController extends Controller
             $book->title = $request->input('title');
             $book->authors = $request->input('authors');
             $book->image = $request->input('image');
+            $book->genres_id = $request->input('genres_id');
+            $book->publisher_id = $request->input('publisher_id');
+            //dd($book);
         } else{
             $book = Book::create($request->all());
+            
         }
         // 2nd approach
 //        $book = new Book();

@@ -23,26 +23,27 @@ class BookShopController extends Controller
         ]);
     }
 
-   /* public function create(){
-        return view('books/create');
+    public function create(){
+        return view('bookshops/create');
     }
     
     public function delete($id){
-            $book = Book::findOrFail($id);
-            $book->delete();
-    
-        return redirect(action('BookController@index'));
+            $bookshop = Bookshop::findOrFail($id);
+            $bookshop->delete();
+            return redirect(action('BookShopController@index'));
     }
 
     public function store(Request $request, $id = null){
+        //return $request->all();
         // 1st approach
         if($request->id){
-            $book = Book::find($id);
-            $book->title = $request->input('title');
-            $book->authors = $request->input('authors');
-            $book->image = $request->input('image');
+            $bookshop = Bookshop::find($id);
+            $bookshop->name = $request->input('name');
+            $bookshop->lat = $request->input('lat');
+            $bookshop->long = $request->input('long');
         } else{
-            $book = Book::create($request->all());
+            $bookshop = Bookshop::create($request->all());
+            //$bookshop = new Bookshop();
         }
         // 2nd approach
 //        $book = new Book();
@@ -53,13 +54,12 @@ class BookShopController extends Controller
         // 3rd approach
 //        $book = new Book()
 //        $book->fill($request->all());;;
-          $book->save();
-        return redirect(action('BookController@index'));
+           $bookshop->save();
+        return redirect(action('BookShopController@index'));
     }
 
     public function edit($id){
-        $book = Book::find($id);
-        return view('books/edit', compact(['book']));
+        $bookshop = Bookshop::find($id);
+        return view('bookshops/edit', compact(['bookshop']));
     }
-*/
 }

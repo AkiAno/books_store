@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Bookshop extends Model
 {
     //
+    protected $fillable = ['name', 'lat', 'long'];
+
     public function book(){
-        return $this->hasMany('App\Book');
+        return $this->belongsToMany('App\Book');
     }
 }
